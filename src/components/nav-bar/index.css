@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.header{
+    background-color:   #f8f2f2;
+    padding-left: 5px;
+    padding-top: 5px;
+    display: flex;
+    align-items: center;
+    gap:15px;
+}
+.header-input-container{
+    display: flex;
+    flex-grow: 1;
+}
+.header-input{
+    padding: 9px;
+    margin-left: 10px;
+    width: 800px;
+}
+.headertag{
+    font-size: 13px;
+    font-weight: 500;
+}
+.header-bottom{
+    background-color: #172738;
+    padding: 20px;
+    height: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+.cart-wrapper Button{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 20px;
+}
+.profile-wrapper{
+    margin-right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+.profile-wrapper h4{
+    margin: 0;
+}
+.nav-buttons{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    background-color: #172738;
+}
