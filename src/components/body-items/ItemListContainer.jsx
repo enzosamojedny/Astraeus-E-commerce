@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Item from "./Item";
 import { useParams } from "react-router-dom";
-import SimpleBackDrop from './SimpleBackDrop';
+import SimpleBackDrop from "./SimpleBackDrop";
 
 function ItemListContainer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,16 +13,16 @@ function ItemListContainer() {
       let url = "https://fakestoreapi.com/products";
       if (params.categories) {
         url += `?/categories=${params.categories}`;
-        console.log(url)
+        console.log(url);
       }
 
       fetch(url)
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           setProducts(data);
           resolve(data);
         })
-        .catch(error => {
+        .catch((error) => {
           console.error(error);
           reject(error);
         })

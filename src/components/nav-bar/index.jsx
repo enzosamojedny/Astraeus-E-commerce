@@ -4,7 +4,7 @@ import CartWidget from "./CartWidget";
 import Form from "react-bootstrap/Form";
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function Header() {
   return (
@@ -12,16 +12,16 @@ function Header() {
       <div className="header">
         {/*IMG LOGO*/}
         <div>
-          <Button variant="dark">
-            <Link to="/" reloadDocument>
+          <NavLink to="/">
+            <Button variant="dark">
               <img
                 style={{ width: 120, height: 65 }}
                 className="image"
                 src={"/workpls.png"}
                 alt=""
               />
-            </Link>
-          </Button>
+            </Button>
+          </NavLink>
         </div>
         {/*SEARCH BAR*/}
         <div className="header-input-container">
@@ -46,7 +46,7 @@ function Header() {
 
       <nav>
         <div className="nav-buttons">
-          <Link to="/category/maleclothes" reloadDocument>
+          <NavLink to="/category/maleclothes" reloadDocument>
             <Button
               size="medium"
               style={{
@@ -58,8 +58,8 @@ function Header() {
             >
               Men clothes
             </Button>
-          </Link>
-          <Link to="/category/womenclothes" reloadDocument>
+          </NavLink>
+          <NavLink to="/category/womenclothes" reloadDocument>
             <Button
               size="medium"
               style={{
@@ -71,8 +71,8 @@ function Header() {
             >
               Women clothes
             </Button>
-          </Link>
-          <Link to="/category/technology" reloadDocument>
+          </NavLink>
+          <NavLink to="/category/technology" reloadDocument>
             <Button
               size="medium"
               style={{
@@ -84,8 +84,8 @@ function Header() {
             >
               Technology
             </Button>
-          </Link>
-          <Link to="/category/jewelry" reloadDocument>
+          </NavLink>
+          <NavLink to="/category/jewelry" reloadDocument>
             <Button
               size="medium"
               style={{
@@ -97,8 +97,8 @@ function Header() {
             >
               Jewelry
             </Button>
-          </Link>
-          <Link to="/category/flashsale" reloadDocument>
+          </NavLink>
+          <NavLink to="/category/flashsale" reloadDocument>
             <Button
               size="medium"
               style={{
@@ -110,10 +110,11 @@ function Header() {
             >
               FlashSale
             </Button>
-          </Link>
+          </NavLink>
         </div>
       </nav>
     </>
   );
 }
+
 export default Header;
