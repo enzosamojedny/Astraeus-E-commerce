@@ -1,4 +1,4 @@
-import Header from "./components/nav-bar/Index";
+import Header from "./components/nav-bar/Header";
 import ItemListContainer from "./components/body-items/ItemListContainer";
 import Item from "./components/body-items/Item";
 import { Route, Routes } from "react-router-dom";
@@ -13,11 +13,7 @@ function App() {
         <Route path="/" element={<ItemListContainer />} />
         <Route
           path="/cart"
-          element={
-            <>
-              <Cart />
-            </>
-          }
+          element={<Cart />}
         />
         <Route path="/products/:id" element={<ItemDetailContainer />} />
         <Route path="/category/:id" element={<Item />} />

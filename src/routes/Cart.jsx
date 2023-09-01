@@ -1,7 +1,14 @@
-import React from "react";
+
+import { NavLink } from "react-router-dom";
 
 function Cart() {
-  return <div>Cart</div>;
+  return <>
+    <NavLink to={"/cart"}>
+    </NavLink>
+    <div>
+      <h1>coleguillas</h1>
+    </div>
+  </>
 }
 
 export default Cart;
