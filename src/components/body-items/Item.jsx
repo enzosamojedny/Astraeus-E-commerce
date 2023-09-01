@@ -7,9 +7,9 @@ import { Typography, Box, Button } from "@mui/material";
 import SimpleBackDrop from "./SimpleBackDrop";
 
 function Item({ products }) {
-  const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState([]);
+
   useEffect(() => {
     if (products) {
       setResult(products);

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Item from "./Item";
 import { useParams } from "react-router-dom";
 import SimpleBackDrop from "./SimpleBackDrop";
+import axios from "axios";
 
 function ItemListContainer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -13,9 +14,7 @@ function ItemListContainer() {
       let url = "https://fakestoreapi.com/products";
       if (params.categories) {
         url += `?/categories=${params.categories}`;
-        console.log(url);
       }
-
       fetch(url)
         .then((response) => response.json())
         .then((data) => {
@@ -23,7 +22,6 @@ function ItemListContainer() {
           resolve(data);
         })
         .catch((error) => {
-          console.error(error);
           reject(error);
         })
         .finally(() => {
@@ -31,7 +29,6 @@ function ItemListContainer() {
         });
     });
   };
-
   useEffect(() => {
     fetchData();
   }, [params.categories]);
