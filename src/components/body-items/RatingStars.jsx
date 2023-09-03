@@ -3,10 +3,7 @@ import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
 export default function RatingStars({ star }) {
-  // Extract rate and count from the star prop
   const { rate, count } = star;
-  // console.log(star);
-  // console.log(rate, count);
 
   const labels = {
     0.5: 'Useless',

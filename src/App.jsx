@@ -1,9 +1,9 @@
 import Header from "./components/nav-bar/Header";
-import ItemListContainer from "./components/body-items/ItemListContainer";
+import ItemListContainer from "./components/body-items/itemList/ItemListContainer";
 import Item from "./components/body-items/Item";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./routes/Cart";
-import ItemDetailContainer from "./components/body-items/ItemDetailContainer";
+import ItemDetailContainer from "./components/body-items/itemDetail/ItemDetailContainer";
 
 function App() {
   return (

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ProductItem.css";
-import ResponsiveDialog from "./Popup";
-import Counter from "./Counter";
+import ResponsiveDialog from "./extras/Popup";
+import Counter from "./extras/Counter";
 import { Typography, Box, Button } from "@mui/material";
-import SimpleBackDrop from "./SimpleBackDrop";
+import SimpleBackDrop from "./extras/SimpleBackdrop";
 
 function Item({ products }) {
   const [loading, setLoading] = useState(true);

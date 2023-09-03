@@ -2,9 +2,8 @@ import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import './itemdetail.css';
-import RatingStars from './RatingStars';
-import SimpleBackdrop from './SimpleBackDrop';
-
+import RatingStars from '../RatingStars';
+import SimpleBackdrop from '../extras/SimpleBackdrop';
 
 function MyFallbackComponent({ error, resetErrorBoundary }) {
     return (
