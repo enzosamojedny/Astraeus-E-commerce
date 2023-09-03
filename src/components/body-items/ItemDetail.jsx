@@ -16,7 +16,7 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
     )
 }
 
-function ItemDetail({ product, loading }) {
+function ItemDetail({ product, loading, star }) {
 
     if (loading) {
         return <div><SimpleBackdrop /></div>;
@@ -33,7 +33,7 @@ function ItemDetail({ product, loading }) {
                     <h2>{title}</h2>
                     <p style={{ fontWeight: '900', fontSize: 'x-large', marginBottom: '20px' }}>Price: ${price}</p>
                     <p style={{ marginLeft: '20px' }}>Description: {description}</p>
-                    <RatingStars />
+                    <RatingStars star={star} />
                 </Box>
             </div>
         </ErrorBoundary>
