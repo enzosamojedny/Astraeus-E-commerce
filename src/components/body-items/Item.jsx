@@ -56,20 +56,6 @@ function Item({ products }) {
                 justifyContent: "center",
               }}
             >
-              <Button
-                variant="outlined"
-                size="small"
-                style={{
-                  color: "#000000",
-                  borderColor: "#172738",
-                  marginRight: 20,
-                  backgroundColor: "#E6E6FA",
-                  fontWeight: 600,
-                }}
-              >
-                Add to Cart
-              </Button>
-              <Counter />
               <div>
                 <Link to={`/products/${product.id}`}>
                   <Button

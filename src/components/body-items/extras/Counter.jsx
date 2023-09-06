@@ -1,12 +1,18 @@
-import { React, useState } from 'react'
+import { useState } from 'react'
 import './counter.css'
-function Counter() {
+function Counter({ onChange }) {
     const [counter, setCounter] = useState(0)
     const increase = () => {
         setCounter(count => count + 1)
+        onChange(counter + 1)//im somehow sending data to parent?
     }
     const decrease = () => {
-        setCounter(count => count > 0 ? count - 1 : count)
+        if (counter > 0) {
+            setCounter(count => count - 1)
+            onChange(counter - 1)
+        }
+
+
     }
     return (
         <div className="counter">

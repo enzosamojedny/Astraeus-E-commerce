@@ -1,35 +1,17 @@
 import ItemDetail from './ItemDetail'
-import { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import './itemdetail.css';
-import axios from 'axios';
+import { DataContext } from '../../../App';
 
 function ItemDetailContainer() {
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [star, setStar] = useState(0);
+  const data = useContext(DataContext)
   const { id } = useParams();
-
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios(`https://fakestoreapi.com/products/${id}`);
-        const { rate, count } = response.data.rating || {};
-
-        setStar({ rate: rate || 0, count: count || 0 });
-        setProduct(response.data);
-        setLoading(false)
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
-  }, [id]);
+  const product = data.find((item) => item.id === parseInt(id, 10))
+  //when i reload the page, .find crashes as it cant find the id
   return (
-    <div><ItemDetail product={product} loading={loading} star={star} /></div>
+    <div><ItemDetail product={product} loading={!product} /></div>
   )
 }
 
 export default ItemDetailContainer
-
