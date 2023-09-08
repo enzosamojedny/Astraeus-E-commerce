@@ -6,7 +6,8 @@ import Cart from "./routes/Cart";
 import ItemDetailContainer from "./components/body-items/itemDetail/ItemDetailContainer";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-
+import { collection, doc, getDoc, getDocs, limit, orderBy, query, where } from "firebase/firestore"
+import { firestore } from "./firebase/client";
 export const DataContext = createContext(null)
 
 function App() {
@@ -18,18 +19,31 @@ function App() {
   //!     })
   //!   );
   //! }
-
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios("https://fakestoreapi.com/products/");
-        setData(response.data)
-      } catch (error) {
-        console.error(error);
-      }
-    };
-    fetchData();
+    const collectionRef = collection(firestore, "products")
+    //* const q = query(collection(firestore, "products"), where("price", ">", 50), limit(5), orderBy("price", "desc"))
+    //* getDocs(q).then(snapshot => {
+    //*   console.log(snapshot)
+    //*   snapshot.forEach((snap) => console.log(snap.data()))
+    //* })
+    getDocs(collectionRef).then(snapshot => {
+      console.log({ snapshot })
+      setData({ snapshot })
+      //snapshot.forEach((snap) => console.log(snap.data()))
+    })
   }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios("https://fakestoreapi.com/products/");
+  //       setData(response.data)
+  //     } catch (error) {
+  //       console.error(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
   return (
     <>
       <Header />
