@@ -1,4 +1,4 @@
-// Categories.js
+
 import { useState, useEffect } from "react";
 import { Button } from "bootstrap";
 import { Link } from "react-router-dom";

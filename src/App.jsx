@@ -8,8 +8,17 @@ import { createContext, useEffect, useState } from "react";
 import axios from "axios";
 
 export const DataContext = createContext(null)
+
 function App() {
   const [data, setData] = useState(null)
+  //! function onClose(id) {
+  //!   setCharacters(
+  //!     characters.filter((character) => {
+  //!       return character.id !== Number(id);
+  //!     })
+  //!   );
+  //! }
+
   useEffect(() => {
     const fetchData = async () => {
       try {

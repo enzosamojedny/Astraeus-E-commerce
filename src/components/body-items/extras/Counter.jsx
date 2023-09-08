@@ -1,19 +1,20 @@
 import { useState } from 'react'
 import './counter.css'
-function Counter({ onChange }) {
+function Counter({ onIncrease, onDecrease }) {
+
+
     const [counter, setCounter] = useState(0)
     const increase = () => {
-        setCounter(count => count + 1)
-        onChange(counter + 1)//im somehow sending data to parent?
-    }
+        setCounter(count => count + 1);
+        onIncrease(); // Call the onIncrease callback
+    };
+
     const decrease = () => {
         if (counter > 0) {
-            setCounter(count => count - 1)
-            onChange(counter - 1)
+            setCounter(count => count - 1);
+            onDecrease(); // Call the onDecrease callback
         }
-
-
-    }
+    };
     return (
         <div className="counter">
             <div className="btn__container">

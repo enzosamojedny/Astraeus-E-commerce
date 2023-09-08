@@ -18,7 +18,18 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
 }
 
 function ItemDetail({ product, loading }) {
+    const [counterValue, setCounterValue] = useState(0);
+    console.log(counterValue)
+    const handleIncrease = () => {
+        setCounterValue(counterValue + 1);
+    };
 
+    const handleDecrease = () => {
+        if (counterValue > 0) {
+            setCounterValue(counterValue - 1);
+        }
+    };
+    //!THIS IS WHAT IM MODIFYING
     if (loading) {
         return <div><SimpleBackdrop /></div>;
     }
@@ -26,7 +37,7 @@ function ItemDetail({ product, loading }) {
         return <div>Product not found.</div>;
     }
     const { id, title, price, description, category, image, rating } = product
-    
+    sessionStorage.setItem(title, price)
     return (
         <ErrorBoundary FallbackComponent={MyFallbackComponent}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -36,7 +47,7 @@ function ItemDetail({ product, loading }) {
                     <p style={{ fontWeight: '900', fontSize: 'x-large', marginBottom: '20px' }}>Price: ${price}</p>
                     <p style={{ marginLeft: '20px' }}>Description: {description}</p>
                     <RatingStars rating={rating} />
-                    <Counter />
+                    <Counter onIncrease={handleIncrease} onDecrease={handleDecrease} />
                     <Button
                         variant="outlined"
                         size="small"
