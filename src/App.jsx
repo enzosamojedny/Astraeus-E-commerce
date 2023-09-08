@@ -16,9 +16,30 @@ function App() {
   useEffect(() => {
     const collectionRef = collection(firestore, "products");
 
-    getDocs(collectionRef).then((snapshot) => {
-      snapshot.forEach((snap) => console.log(snap.data()))
-    })
+    getDocs(collectionRef)
+      .then((snapshot) => {
+        const transformedData = snapshot.docs.map((doc) => {
+          const firestoreData = doc.data();
+          return {
+            id: firestoreData.id,
+            title: firestoreData.title,
+            price: firestoreData.price,
+            description: firestoreData.description,
+            category: firestoreData.category,
+            image: firestoreData.image,
+            stock: firestoreData.stock,
+            rating: {
+              rate: firestoreData.rate,
+              count: firestoreData.count,
+            },
+          };
+        });
+
+        setData(transformedData);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
 
   return (

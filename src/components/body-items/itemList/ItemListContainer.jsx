@@ -1,30 +1,23 @@
 import { useEffect, useState } from "react";
 import Item from "../Item";
-import { useParams } from "react-router-dom";
 import SimpleBackDrop from "../extras/SimpleBackdrop";
-import axios from "axios";
+import { DataContext } from "../../../App";
+import { useContext } from "react";
 
 function ItemListContainer() {
+  const data = useContext(DataContext)
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
-  async function fetchData() {
+  useEffect(() => {
     try {
-      const response = await axios("https://fakestoreapi.com/products");
-      const data = response.data;
       setProducts(data);
       setIsLoading(false);
-      return data;
     } catch (error) {
-      console.error("Error fetching data:", error);
-      setIsLoading(false);
-      throw error;
+      console.error(error)
+      setIsLoading(false)
     }
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
+  });
 
   return isLoading ? <SimpleBackDrop /> : <Item products={products} />;
 }

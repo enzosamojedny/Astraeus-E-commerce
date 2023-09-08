@@ -37,7 +37,6 @@ function ItemDetail({ product, loading }) {
         return <div>Product not found.</div>;
     }
     const { id, title, price, description, category, image, rating } = product
-    sessionStorage.setItem(title, price)
     return (
         <ErrorBoundary FallbackComponent={MyFallbackComponent}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

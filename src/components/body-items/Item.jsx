@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./ProductItem.css";
 import ResponsiveDialog from "./extras/Popup";
-import Counter from "./extras/Counter";
 import { Typography, Box, Button } from "@mui/material";
 import SimpleBackDrop from "./extras/SimpleBackdrop";
 
 function Item({ products }) {
   const [loading, setLoading] = useState(true);
   const [result, setResult] = useState([]);
-
   useEffect(() => {
     if (products) {
       setResult(products);
@@ -46,6 +44,9 @@ function Item({ products }) {
             </Typography>
             <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
               ${product.price}
+            </Typography>
+            <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
+              stock de {product.stock} unidades
             </Typography>
             <Box
               style={{
