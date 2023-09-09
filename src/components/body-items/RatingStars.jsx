@@ -2,9 +2,9 @@ import Box from '@mui/material/Box';
 import Rating from '@mui/material/Rating';
 import StarIcon from '@mui/icons-material/Star';
 
-export default function RatingStars({ rating }) {
+export default function RatingStars({ product }) {
 
-  const { count, rate } = rating
+  const { rate, count } = product
   const labels = {
     0.5: 'Useless',
     1: 'Useless+',

@@ -28,10 +28,9 @@ function App() {
             category: firestoreData.category,
             image: firestoreData.image,
             stock: firestoreData.stock,
-            rating: {
-              rate: firestoreData.rate,
-              count: firestoreData.count,
-            },
+            rate: firestoreData.rate,
+            count: firestoreData.count,
+
           };
         });
 

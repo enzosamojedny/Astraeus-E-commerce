@@ -45,7 +45,7 @@ function ItemDetail({ product, loading }) {
                     <h2>{title}</h2>
                     <p style={{ fontWeight: '900', fontSize: 'x-large', marginBottom: '20px' }}>Price: ${price}</p>
                     <p style={{ marginLeft: '20px' }}>Description: {description}</p>
-                    <RatingStars rating={rating} />
+                    <RatingStars product={product} />
                     <Counter onIncrease={handleIncrease} onDecrease={handleDecrease} />
                     <Button
                         variant="outlined"
