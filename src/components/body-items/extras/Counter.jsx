@@ -1,14 +1,11 @@
 import { useState } from 'react'
 import './counter.css'
 function Counter({ onIncrease, onDecrease }) {
-
-
     const [counter, setCounter] = useState(0)
     const increase = () => {
         setCounter(count => count + 1);
         onIncrease(); // Call the onIncrease callback
     };
-
     const decrease = () => {
         if (counter > 0) {
             setCounter(count => count - 1);

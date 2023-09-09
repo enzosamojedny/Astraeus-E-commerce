@@ -19,7 +19,6 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
 
 function ItemDetail({ product, loading }) {
     const [counterValue, setCounterValue] = useState(0);
-    console.log(counterValue)
     const handleIncrease = () => {
         setCounterValue(counterValue + 1);
     };
@@ -60,7 +59,7 @@ function ItemDetail({ product, loading }) {
 
                         <NavLink to={{
                             pathname: '/cart',
-                            search: `?id=${id}&title=${title}&price=${price}`,
+                            search: `?id=${id}&title=${title}&price=${price}&count=${counterValue}`,
                         }}>Add to Cart</NavLink>
                     </Button>
                 </Box>
