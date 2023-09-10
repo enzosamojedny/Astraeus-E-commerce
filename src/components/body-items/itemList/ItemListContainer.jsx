@@ -5,10 +5,11 @@ import { DataContext } from "../../../App";
 import { useContext } from "react";
 
 function ItemListContainer() {
-  const data = useContext(DataContext)
+  const { data } = useContext(DataContext)
+  // console.log(data)
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
-
+  console.log()
   useEffect(() => {
     try {
       setProducts(data);

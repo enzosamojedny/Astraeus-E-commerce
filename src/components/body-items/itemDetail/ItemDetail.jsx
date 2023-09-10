@@ -18,13 +18,13 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
 }
 
 function ItemDetail({ product, loading }) {
-    const [counterValue, setCounterValue] = useState(0);
+    const [counterValue, setCounterValue] = useState(1);
     const handleIncrease = () => {
         setCounterValue(counterValue + 1);
     };
 
     const handleDecrease = () => {
-        if (counterValue > 0) {
+        if (counterValue > 1) {
             setCounterValue(counterValue - 1);
         }
     };

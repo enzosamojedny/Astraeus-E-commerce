@@ -1,17 +1,18 @@
 import { useState } from 'react'
 import './counter.css'
 function Counter({ onIncrease, onDecrease }) {
-    const [counter, setCounter] = useState(0)
+    const [counter, setCounter] = useState(1)
     const increase = () => {
         setCounter(count => count + 1);
         onIncrease(); // Call the onIncrease callback
     };
     const decrease = () => {
-        if (counter > 0) {
+        if (counter > 1) {
             setCounter(count => count - 1);
             onDecrease(); // Call the onDecrease callback
         }
     };
+    console.log(counter)
     return (
         <div className="counter">
             <div className="btn__container">

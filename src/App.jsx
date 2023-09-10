@@ -8,11 +8,16 @@ import { createContext, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "./firebase/client";
 
-export const DataContext = createContext(null);
+export const DataContext = createContext({
+  data: null,
+  cart: [],
+  addToCart: () => { },
+  removeFromCart: () => { },
+});
 
 function App() {
   const [data, setData] = useState(null);
-
+  const [cart, setCart] = useState([]);
   useEffect(() => {
     const collectionRef = collection(firestore, "products");
 
@@ -40,11 +45,18 @@ function App() {
         console.error("Error fetching data:", error);
       });
   }, []);
+  const addToCart = (item) => {
+    setCart((prevCart) => [...prevCart, item]);
+  };
 
+  const removeFromCart = (itemId) => {
+    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
+  };
+  // 
   return (
     <>
       <Header />
-      <DataContext.Provider value={data}>
+      <DataContext.Provider value={{ data, cart, addToCart, removeFromCart }}>
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/cart" element={<Cart />} />
