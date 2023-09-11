@@ -20,7 +20,6 @@ function App() {
   const [cart, setCart] = useState([]);
   useEffect(() => {
     const collectionRef = collection(firestore, "products");
-
     getDocs(collectionRef)
       .then((snapshot) => {
         const transformedData = snapshot.docs.map((doc) => {

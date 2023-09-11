@@ -1,11 +1,12 @@
 import { Box, Button } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import './itemdetail.css';
 import RatingStars from '../RatingStars';
 import SimpleBackdrop from '../extras/SimpleBackdrop';
 import Counter from '../extras/Counter';
 import { NavLink } from 'react-router-dom';
+import { DataContext } from '../../../App';
 
 function MyFallbackComponent({ error, resetErrorBoundary }) {
     return (
@@ -18,7 +19,10 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
 }
 
 function ItemDetail({ product, loading }) {
+    const { data, cart, addToCart, removeFromCart } = useContext(DataContext);//!error fetching data
+    const { id, title, price, description, category, image, rating } = product
     const [counterValue, setCounterValue] = useState(1);
+
     const handleIncrease = () => {
         setCounterValue(counterValue + 1);
     };
@@ -28,14 +32,13 @@ function ItemDetail({ product, loading }) {
             setCounterValue(counterValue - 1);
         }
     };
-    //!THIS IS WHAT IM MODIFYING
     if (loading) {
         return <div><SimpleBackdrop /></div>;
     }
-    if (!product) {
+    if (!data) {
         return <div>Product not found.</div>;
     }
-    const { id, title, price, description, category, image, rating } = product
+
     return (
         <ErrorBoundary FallbackComponent={MyFallbackComponent}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>

@@ -6,7 +6,8 @@ import './cart.css'
 import { Button } from "@mui/material";
 
 function Cart() {
-  const { data } = useContext(DataContext)
+  const { data, cart, removeFromCart, addToCart } = useContext(DataContext)
+
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('id');
@@ -15,8 +16,7 @@ function Cart() {
   const title = searchParams.get('title');
   const price = searchParams.get('price');
   const count = searchParams.get('count')
-  console.log(count)
-  const image = selectedItem.image
+  const image = selectedItem ? selectedItem.image : '';
   const total = count * price
 
 

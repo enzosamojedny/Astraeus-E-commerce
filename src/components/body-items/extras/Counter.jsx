@@ -4,15 +4,14 @@ function Counter({ onIncrease, onDecrease }) {
     const [counter, setCounter] = useState(1)
     const increase = () => {
         setCounter(count => count + 1);
-        onIncrease(); // Call the onIncrease callback
+        onIncrease();
     };
     const decrease = () => {
         if (counter > 1) {
             setCounter(count => count - 1);
-            onDecrease(); // Call the onDecrease callback
+            onDecrease();
         }
     };
-    console.log(counter)
     return (
         <div className="counter">
             <div className="btn__container">
