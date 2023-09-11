@@ -1,4 +1,4 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import { useContext, useEffect, useState } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 import './itemdetail.css';
@@ -19,14 +19,15 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
 }
 
 function ItemDetail({ product, loading }) {
-    const { data, cart, addToCart, removeFromCart } = useContext(DataContext);//!error fetching data
+    const { data, cart, addToCart, removeFromCart } = useContext(DataContext);
+    //!error fetching <data>
     const { id, title, price, description, category, image, rating } = product
     const [counterValue, setCounterValue] = useState(1);
 
     const handleIncrease = () => {
         setCounterValue(counterValue + 1);
     };
-
+    //!quiero que reste el stock cuando hago una compra
     const handleDecrease = () => {
         if (counterValue > 1) {
             setCounterValue(counterValue - 1);
@@ -48,6 +49,9 @@ function ItemDetail({ product, loading }) {
                     <p style={{ fontWeight: '900', fontSize: 'x-large', marginBottom: '20px' }}>Price: ${price}</p>
                     <p style={{ marginLeft: '20px' }}>Description: {description}</p>
                     <RatingStars product={product} />
+                    <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
+                        stock de {product.stock} unidades
+                    </Typography>
                     <Counter onIncrease={handleIncrease} onDecrease={handleDecrease} />
                     <Button
                         variant="outlined"

@@ -45,9 +45,7 @@ function Item({ products }) {
             <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
               ${product.price}
             </Typography>
-            <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
-              stock de {product.stock} unidades
-            </Typography>
+
             <Box
               style={{
                 display: "flex",

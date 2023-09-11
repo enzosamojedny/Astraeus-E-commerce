@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { DataContext } from "../App";
 import './cart.css'
@@ -7,7 +7,7 @@ import { Button } from "@mui/material";
 
 function Cart() {
   const { data, cart, removeFromCart, addToCart } = useContext(DataContext)
-
+  const navigate = useNavigate()
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('id');
@@ -18,7 +18,10 @@ function Cart() {
   const count = searchParams.get('count')
   const image = selectedItem ? selectedItem.image : '';
   const total = count * price
-
+  function handleRemovalFromCart() {
+    removeFromCart(selectedItem)
+    navigate("/cart")
+  }
 
   return <>
     <div className="cart-container">
@@ -26,6 +29,7 @@ function Cart() {
       <NavLink to={`/products/${id}`}><p className="cart-title">{title}</p></NavLink>
       <p>{count}</p>
       <p className="cart-price">${total}</p>
+      <Button onClick={handleRemovalFromCart}>X</Button>
       <Button variant="outlined"
         size="small"
         style={{
