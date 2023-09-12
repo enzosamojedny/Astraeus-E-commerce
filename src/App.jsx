@@ -44,18 +44,15 @@ function App() {
         console.error("Error fetching data:", error);
       });
   }, []);
-  const addToCart = (item) => {
-    setCart((prevCart) => [...prevCart, item]);
-  };
 
   const removeFromCart = (itemId) => {
     setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
   };
-  // 
+
   return (
     <>
       <Header />
-      <DataContext.Provider value={{ data, cart, addToCart, removeFromCart }}>
+      <DataContext.Provider value={{ data, cart, removeFromCart }}>
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/cart" element={<Cart />} />

@@ -6,7 +6,6 @@ import RatingStars from '../RatingStars';
 import SimpleBackdrop from '../extras/SimpleBackdrop';
 import Counter from '../extras/Counter';
 import { NavLink } from 'react-router-dom';
-import { DataContext } from '../../../App';
 
 function MyFallbackComponent({ error, resetErrorBoundary }) {
     return (
@@ -18,8 +17,8 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
     )
 }
 
-function ItemDetail({ product, loading }) {
-    const { data, cart, addToCart, removeFromCart } = useContext(DataContext);
+function ItemDetail({ product, loading, cart }) {
+
     //!error fetching <data>
     const { id, title, price, description, category, image, rating } = product
     const [counterValue, setCounterValue] = useState(1);
@@ -36,10 +35,12 @@ function ItemDetail({ product, loading }) {
     if (loading) {
         return <div><SimpleBackdrop /></div>;
     }
-    if (!data) {
+    if (!product) {
         return <div>Product not found.</div>;
     }
-
+    function handleSubmit(event) {
+        event.preventDefault()
+    }
     return (
         <ErrorBoundary FallbackComponent={MyFallbackComponent}>
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -50,25 +51,30 @@ function ItemDetail({ product, loading }) {
                     <p style={{ marginLeft: '20px' }}>Description: {description}</p>
                     <RatingStars product={product} />
                     <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
-                        stock de {product.stock} unidades
+                        {product.stock} units left
                     </Typography>
                     <Counter onIncrease={handleIncrease} onDecrease={handleDecrease} />
+                    //!---------------------------------------
                     <Button
                         variant="outlined"
                         size="small"
+                        onClick={handleSubmit}
                         style={{
                             color: "#000000",
                             borderColor: "#172738",
                             marginRight: 20,
                             backgroundColor: "#E6E6FA",
                             fontWeight: 600,
-                        }}>
+
+                        }}
+                    >
 
                         <NavLink to={{
                             pathname: '/cart',
                             search: `?id=${id}&title=${title}&price=${price}&count=${counterValue}`,
                         }}>Add to Cart</NavLink>
                     </Button>
+                    //!---------------------------------------
                 </Box>
             </div>
         </ErrorBoundary>
