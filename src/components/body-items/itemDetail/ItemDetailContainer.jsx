@@ -5,13 +5,13 @@ import './itemdetail.css';
 import { DataContext } from '../../../App';
 
 function ItemDetailContainer() {
-  const { data, cart, removeFromCart } = useContext(DataContext);
+  const { data } = useContext(DataContext);
   const { id } = useParams();
 
   const product = data.find((item) => item.id === parseInt(id));
   //when i reload the page, .find crashes as it cant find the id
   return (
-    <div><ItemDetail product={product} loading={!product} cart={cart} /></div>
+    <div><ItemDetail product={product} loading={!product} /></div>
   )
 }
 

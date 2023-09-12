@@ -1,23 +1,17 @@
 import Header from "./components/nav-bar/Header";
 import ItemListContainer from "./components/body-items/itemList/ItemListContainer";
-import Item from "./components/body-items/Item";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./routes/Cart";
 import ItemDetailContainer from "./components/body-items/itemDetail/ItemDetailContainer";
 import { createContext, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "./firebase/client";
+import CategoryItems from "./components/nav-bar/CategoryItems";
 
-export const DataContext = createContext({
-  data: null,
-  cart: [],
-  addToCart: () => { },
-  removeFromCart: () => { },
-});
+export const DataContext = createContext();
 
 function App() {
   const [data, setData] = useState(null);
-  const [cart, setCart] = useState([]);
   useEffect(() => {
     const collectionRef = collection(firestore, "products");
     getDocs(collectionRef)
@@ -34,10 +28,8 @@ function App() {
             stock: firestoreData.stock,
             rate: firestoreData.rate,
             count: firestoreData.count,
-
           };
         });
-
         setData(transformedData);
       })
       .catch((error) => {
@@ -45,19 +37,15 @@ function App() {
       });
   }, []);
 
-  const removeFromCart = (itemId) => {
-    setCart((prevCart) => prevCart.filter((item) => item.id !== itemId));
-  };
-
   return (
     <>
       <Header />
-      <DataContext.Provider value={{ data, cart, removeFromCart }}>
+      <DataContext.Provider value={{ data }}>
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<ItemDetailContainer />} />
-          <Route path="/category/:id" element={<Item />} />
+          <Route path="/category/:id" element={<CategoryItems />} />
         </Routes>
       </DataContext.Provider>
     </>

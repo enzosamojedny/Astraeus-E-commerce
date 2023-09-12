@@ -17,7 +17,7 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
     )
 }
 
-function ItemDetail({ product, loading, cart }) {
+function ItemDetail({ product, loading }) {
 
     //!error fetching <data>
     const { id, title, price, description, category, image, rating } = product
@@ -65,10 +65,8 @@ function ItemDetail({ product, loading, cart }) {
                             marginRight: 20,
                             backgroundColor: "#E6E6FA",
                             fontWeight: 600,
-
                         }}
                     >
-
                         <NavLink to={{
                             pathname: '/cart',
                             search: `?id=${id}&title=${title}&price=${price}&count=${counterValue}`,

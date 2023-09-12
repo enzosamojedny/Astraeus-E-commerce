@@ -6,15 +6,13 @@ import './cart.css'
 import { Button } from "@mui/material";
 
 function Cart() {
-  const { data, removeFromCart } = useContext(DataContext)
+  const { data } = useContext(DataContext)
   const savedCart = JSON.parse(localStorage.getItem('cart')) || [];
   const [cart, setCart] = useState(savedCart);
-  const navigate = useNavigate()
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('id');
 
-  const identify = searchParams.get('id');
   const title = searchParams.get('title');
   const price = parseFloat(searchParams.get('price'));
   const count = parseInt(searchParams.get('count'), 10);
