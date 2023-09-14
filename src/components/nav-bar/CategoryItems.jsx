@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { DataContext } from "../../App";
 import { useContext } from "react";
 import { ErrorBoundary } from "react-error-boundary";
@@ -14,6 +14,7 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
         </div>
     )
 }
+
 export default function CategoryItems() {
     const { data } = useContext(DataContext);
     const { id } = useParams()
@@ -43,12 +44,26 @@ export default function CategoryItems() {
                             >
                                 {item.title}
                             </Typography>
-                            <p>{item.description}</p>
 
                             <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
                                 ${item.price}
                             </Typography>
                             <p>Stock: {item.stock}</p>
+                            <Link to={`/products/${item.id}`}>
+                                <Button
+                                    variant="outlined"
+                                    size="small"
+                                    style={{
+                                        color: "#000000",
+                                        borderColor: "#172738",
+                                        marginRight: 20,
+                                        backgroundColor: "#E6E6FA",
+                                        fontWeight: 600,
+                                    }}
+                                >
+                                    Details
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 ))}
