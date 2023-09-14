@@ -12,7 +12,6 @@ function Cart() {
   const location = useLocation()
   const searchParams = new URLSearchParams(location.search)
   const id = searchParams.get('id');
-
   const title = searchParams.get('title');
   const price = parseFloat(searchParams.get('price'));
   const count = parseInt(searchParams.get('count'), 10);
@@ -30,7 +29,6 @@ function Cart() {
         image: image,
         total: total,
       };
-
       const itemExistsInCart = cart.some(item => item.id === id);
       if (!itemExistsInCart) {
         setCart(prevCart => [...prevCart, cartItem]);
@@ -41,7 +39,6 @@ function Cart() {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
-
 
   function handleRemovalFromCart(itemId) {
     setCart(prevCart => prevCart.filter(item => item.id !== itemId));

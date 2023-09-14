@@ -6,7 +6,6 @@ import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Button from "@mui/material/Button";
 import { NavLink } from "react-router-dom";
 
-
 function Header() {
   return (
     <>
@@ -44,10 +43,9 @@ function Header() {
         </div>
         <CartWidget />
       </div>
-
       <nav>
         <div className="nav-buttons">
-          <NavLink to="/category/maleclothes" reloadDocument>
+          <NavLink to="/category/mens%20clothing">
             <Button
               size="medium"
               style={{
@@ -60,7 +58,7 @@ function Header() {
               Men clothes
             </Button>
           </NavLink>
-          <NavLink to="/category/womenclothes" reloadDocument>
+          <NavLink to="/category/womens%20clothing">
             <Button
               size="medium"
               style={{
@@ -73,7 +71,7 @@ function Header() {
               Women clothes
             </Button>
           </NavLink>
-          <NavLink to="/category/technology" reloadDocument>
+          <NavLink to="/category/electronics">
             <Button
               size="medium"
               style={{
@@ -83,10 +81,10 @@ function Header() {
                 fontWeight: 600,
               }}
             >
-              Technology
+              Electronics
             </Button>
           </NavLink>
-          <NavLink to="/category/jewelry" reloadDocument>
+          <NavLink to="/category/jewelry">
             <Button
               size="medium"
               style={{
@@ -97,19 +95,6 @@ function Header() {
               }}
             >
               Jewelry
-            </Button>
-          </NavLink>
-          <NavLink to="/category/flashsale" reloadDocument>
-            <Button
-              size="medium"
-              style={{
-                color: "#000000",
-                marginRight: 50,
-                backgroundColor: "white",
-                fontWeight: 600,
-              }}
-            >
-              FlashSale
             </Button>
           </NavLink>
         </div>

@@ -9,7 +9,6 @@ function ItemDetailContainer() {
   const { id } = useParams();
 
   const product = data.find((item) => item.id === parseInt(id));
-  //when i reload the page, .find crashes as it cant find the id
   return (
     <div><ItemDetail product={product} loading={!product} /></div>
   )
