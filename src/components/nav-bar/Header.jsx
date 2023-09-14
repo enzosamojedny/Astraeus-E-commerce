@@ -24,7 +24,7 @@ function Header() {
           </NavLink>
         </div>
         {/*SEARCH BAR*/}
-        <div className="header-input-container">
+        {/* <div className="header-input-container">
           <FloatingLabel>
             <Form.Control
               className="header-input"
@@ -35,7 +35,7 @@ function Header() {
           <Button variant="dark">
             <SearchOutlinedIcon style={{ marginTop: 2, color: "black" }} />
           </Button>
-        </div>
+        </div> */}
         <div className="profile-wrapper">
           <Button variant="dark">
             <h4 className="header-tag">My Profile</h4>
