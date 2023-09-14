@@ -1,6 +1,7 @@
 # EntregaFinal-REACT-47130
 
 El proyecto es una tienda ficticia de diversos artículos, consta con cards, un detalle de los items, un carrito funcional con checkout y filtro por categorias.
+Cabe destacar que el sitio no esta optimizado (aun) para vista en mobile.
 
 Incluí varias librerias:
 
