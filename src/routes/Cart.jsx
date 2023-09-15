@@ -29,9 +29,16 @@ function Cart() {
         image: image,
         total: total,
       };
-      const itemExistsInCart = cart.some(item => item.id === id);
-      if (!itemExistsInCart) {
-        setCart(prevCart => [...prevCart, cartItem]);
+      const existingItem = cart.find(item => item.id === id);
+
+      if (existingItem) {
+        setCart(prevCart =>
+          prevCart.map(item =>
+            item.id === id ? { ...item, count: item.count + count, total: item.total + total } : item
+          )
+        )
+      } else {
+        setCart(prevCart => [...prevCart, cartItem])
       }
     }
   }, [id, title, price, count]);

@@ -44,11 +44,9 @@ export default function CategoryItems() {
                             >
                                 {item.title}
                             </Typography>
-
                             <Typography variant="h3" style={{ fontSize: 19, fontWeight: 600 }}>
                                 ${item.price}
                             </Typography>
-                            <p>Stock: {item.stock}</p>
                             <Link to={`/products/${item.id}`}>
                                 <Button
                                     variant="outlined"
