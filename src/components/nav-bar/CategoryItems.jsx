@@ -5,6 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import SimpleBackdrop from "../body-items/extras/SimpleBackdrop";
 import { Typography, Box, Button } from "@mui/material";
 import "../body-items/ProductItem.css";
+
 function MyFallbackComponent({ error, resetErrorBoundary }) {
     return (
         <div role="alert">

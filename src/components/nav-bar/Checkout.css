@@ -1,0 +1,19 @@
+.form{
+    display: flex;
+    color: black;
+    border-color: black;
+
+}
+.div-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+
+}

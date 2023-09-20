@@ -9,6 +9,7 @@ function ItemDetailContainer() {
   const { id } = useParams();
 
   const product = data.find((item) => item.id === parseInt(id));
+
   return (
     <div><ItemDetail product={product} loading={!product} /></div>
   )

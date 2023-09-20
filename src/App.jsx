@@ -7,6 +7,7 @@ import { createContext, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { firestore } from "./firebase/client";
 import CategoryItems from "./components/nav-bar/CategoryItems";
+import Checkout from "./components/nav-bar/Checkout";
 
 export const DataContext = createContext();
 
@@ -46,6 +47,7 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/products/:id" element={<ItemDetailContainer />} />
           <Route path="/category/:id" element={<CategoryItems />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </DataContext.Provider>
     </>
