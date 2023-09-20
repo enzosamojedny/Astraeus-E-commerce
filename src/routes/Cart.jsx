@@ -76,18 +76,19 @@ function Cart() {
           <p>{item.count}</p>
           <p className="cart-price">${item.total}</p>
           <Button onClick={() => handleRemovalFromCart(item.id)}>X</Button>
-          <NavLink to={`/checkout`}>
-            <Button variant="outlined"
-              size="small"
-              style={{
-                color: "#000000",
-                borderColor: "#172738",
-                marginRight: 20,
-                backgroundColor: "#E6E6FA",
-                fontWeight: 600,
-              }} order={sendOrder}>Buy Now</Button></NavLink>
+
         </div>
       ))}
+      <NavLink to={`/checkout`}>
+        <Button variant="outlined"
+          size="small"
+          style={{
+            color: "#000000",
+            borderColor: "#172738",
+            marginRight: 20,
+            backgroundColor: "#E6E6FA",
+            fontWeight: 600,
+          }} order={sendOrder}>Buy Now</Button></NavLink>
     </>
   );
 }
