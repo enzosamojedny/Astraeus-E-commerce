@@ -5,8 +5,11 @@ import TextField from '@mui/material/TextField';
 import { Button, Typography } from '@mui/material';
 import { collection, addDoc } from 'firebase/firestore';
 import { app } from '../../firebase/client';
+import SpanningTable from './Table';
 
 function Checkout() {
+
+
   const [orderData, setOrderData] = useState({
     email: '',
     fullName: '',
@@ -20,19 +23,21 @@ function Checkout() {
     setOrderData({ ...orderData, [id]: value });
   };
 
-  const sendOrder = async () => {
-    const db = app.firestore();
+  // const sendOrder = async () => {
+  //   const db = app.firestore();
 
-    try {
-      const docRef = await addDoc(collection(db, 'orders'), orderData);
-      console.log('Order written with ID: ', docRef.id);
-    } catch (error) {
-      console.error('Error adding order: ', error);
-    }
-  };
+  //   try {
+  //     const docRef = await addDoc(collection(db, 'orders'), orderData);
+  //     console.log('Order written with ID: ', docRef.id);
+  //   } catch (error) {
+  //     console.error('Error adding order: ', error);
+  //   }
+  // };
 
   return (
+
     <div className='div-container'>
+      <SpanningTable />
       <Box
         component='form'
         sx={{
@@ -94,11 +99,11 @@ function Checkout() {
             backgroundColor: '#E6E6FA',
             fontWeight: 600,
           }}
-          onClick={sendOrder}
         >
           BUY NOW
         </Button>
       </Box>
+
     </div>
   );
 }

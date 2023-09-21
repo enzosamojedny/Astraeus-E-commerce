@@ -2,18 +2,32 @@
     display: flex;
     color: black;
     border-color: black;
-
 }
 .div-container{
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
-
 }
 .box{
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
-
+    width: fit-content;
 }
+.order-container{
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+}
+.images{
+    width: 100px;
+}
+.column {
+    flex: 1;
+    border: 1px solid black;
+  }
+  .item-box{
+    display: flex;
+    flex-direction: column;
+  }
