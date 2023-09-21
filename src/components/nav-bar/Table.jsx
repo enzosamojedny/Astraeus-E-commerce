@@ -6,33 +6,37 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import './Checkout.css';
-let savedItems = JSON.parse(localStorage.getItem('cart'))
+import { useState, useEffect } from 'react';
 
-let ids = [];
-let titles = [];
-let prices = [];
-let counts = [];
-let images = [];
-let totals = [];
-savedItems.forEach(item => {
-    ids.push(item.id);
-    titles.push(item.title);
-    prices.push(item.price);
-    counts.push(item.count);
-    images.push(item.image);
-    totals.push(item.total);
-});
-let totalSum = totals.reduce((sum, total) => sum + total, 0)
-let imageComponents = images.map((url, index) => <img key={index} src={url} alt='' className='images column' />)
-let totalCount = counts.map((element) => <p className='column'>{element}</p >)
-
-const TAX_RATE = 0.07;
 
 function ccyFormat(num) {
     return `${num.toFixed(2)}`;
 }
-
 export default function SpanningTable() {
+    const [savedItems, setSavedItems] = useState([]);
+    let ids = [];
+    let titles = [];
+    let prices = [];
+    let counts = [];
+    let images = [];
+    let totals = [];
+    // let savedItems = JSON.parse(localStorage.getItem('cart'))
+    savedItems.forEach(item => {
+        ids.push(item.id);
+        titles.push(item.title);
+        prices.push(item.price);
+        counts.push(item.count);
+        images.push(item.image);
+        totals.push(item.total);
+    });
+    useEffect(() => {
+        setSavedItems(JSON.parse(localStorage.getItem('cart')));
+    }, [])
+    let totalSum = totals.reduce((sum, total) => sum + total, 0)
+    let imageComponents = images.map((url, index) => <img key={index} src={url} alt='' className='images column' />)
+    let totalCount = counts.map((element) => <p className='column'>{element}</p>)
+
+    const TAX_RATE = 0.07;
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="spanning table">
