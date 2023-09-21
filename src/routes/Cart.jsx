@@ -20,7 +20,6 @@ function Cart() {
   const image = selectedItem ? selectedItem.image : '';
   const total = count * price;
 
-
   useEffect(() => {
     if (id && title && price && count) {
       const cartItem = {
@@ -55,18 +54,7 @@ function Cart() {
     const updatedCart = savedCart.filter(item => item.id !== itemId);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }
-  // const sendOrder = () => {
-  // const order = {
-  //   id: id,
-  //   title: title,
-  //   image: image,
-  //   count: count,
-  //   total: total
-  // }
-  //   const db = getFirestore()
-  //   const orderCollection = collection(db, "orders")
-  //   addDoc(orderCollection, order).then(({ id }) => setOrder(id))
-  // }
+
   return (
     <>
       {cart.map(item => (
@@ -81,7 +69,6 @@ function Cart() {
       <NavLink to={{ pathname: '/checkout' }}>
         <Button variant="outlined"
           size="small"
-
           style={{
             color: "#000000",
             borderColor: "#172738",
