@@ -4,12 +4,10 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Typography } from '@mui/material';
 import { collection, addDoc } from 'firebase/firestore';
-import { app } from '../../firebase/client';
+import { db } from '../../firebase/client';
 import SpanningTable from './Table';
 
 function Checkout() {
-
-
   const [orderData, setOrderData] = useState({
     email: '',
     fullName: '',
@@ -17,22 +15,20 @@ function Checkout() {
     country: '',
     creditCardNumber: ''
   });
-
   const handleChange = (event) => {
     const { id, value } = event.target;
     setOrderData({ ...orderData, [id]: value });
   };
 
-  // const sendOrder = async () => {
-  //   const db = app.firestore();
-
-  //   try {
-  //     const docRef = await addDoc(collection(db, 'orders'), orderData);
-  //     console.log('Order written with ID: ', docRef.id);
-  //   } catch (error) {
-  //     console.error('Error adding order: ', error);
-  //   }
-  // };
+  const addOrder = async (element) => {
+    element.preventDefault();
+    try {
+      const docRef = await addDoc(collection(db, "orders"), orderData);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (element) {
+      console.error("Error adding document: ", element);
+    }
+  }
 
   return (
 
@@ -99,6 +95,7 @@ function Checkout() {
             backgroundColor: '#E6E6FA',
             fontWeight: 600,
           }}
+          onClick={addOrder}
         >
           BUY NOW
         </Button>

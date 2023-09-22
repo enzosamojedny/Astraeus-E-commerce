@@ -5,7 +5,7 @@ import Cart from "./routes/Cart";
 import ItemDetailContainer from "./components/body-items/itemDetail/ItemDetailContainer";
 import { createContext, useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-import { firestore } from "./firebase/client";
+import { db } from "./firebase/client";
 import CategoryItems from "./components/nav-bar/CategoryItems";
 import Checkout from "./components/nav-bar/Checkout";
 
@@ -14,7 +14,7 @@ export const DataContext = createContext();
 function App() {
   const [data, setData] = useState(null);
   useEffect(() => {
-    const collectionRef = collection(firestore, "products");
+    const collectionRef = collection(db, "products");
     getDocs(collectionRef)
       .then((snapshot) => {
         const transformedData = snapshot.docs.map((doc) => {
