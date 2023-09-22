@@ -8,6 +8,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/client";
 import CategoryItems from "./components/nav-bar/CategoryItems";
 import Checkout from "./components/nav-bar/Checkout";
+import DrawerAppBar from "./components/nav-bar/navbartest";
 
 export const DataContext = createContext();
 
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <DrawerAppBar />
       <DataContext.Provider value={{ data }}>
         <Routes>
           <Route path="/" element={<ItemListContainer />} />

@@ -15,7 +15,6 @@ function MyFallbackComponent({ error, resetErrorBoundary }) {
         </div>
     )
 }
-
 export default function CategoryItems() {
     const { data } = useContext(DataContext);
     const { id } = useParams()
@@ -28,10 +27,9 @@ export default function CategoryItems() {
         <ErrorBoundary FallbackComponent={MyFallbackComponent}>
 
             <div className="product-container">
-
                 {filteredData.map(item => (
                     <div className="product-item">
-                        <div key={item.id}>
+                        <div >
                             <img
                                 src={item.image}
                                 alt={item.title}
@@ -67,7 +65,6 @@ export default function CategoryItems() {
                     </div>
                 ))}
             </div>
-
         </ErrorBoundary>
     );
 }

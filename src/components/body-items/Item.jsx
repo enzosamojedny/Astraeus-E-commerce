@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./ProductItem.css";
 import ResponsiveDialog from "./extras/Popup";
 import { Typography, Box, Button } from "@mui/material";
@@ -16,7 +16,7 @@ function Item({ products }) {
   }, [products]);
 
   return (
-    <div>
+    <div className="body">
       <div
         style={{
           display: "flex",
