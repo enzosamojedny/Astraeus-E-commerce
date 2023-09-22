@@ -1,4 +1,3 @@
-import Header from "./components/nav-bar/Header";
 import ItemListContainer from "./components/body-items/itemList/ItemListContainer";
 import { Route, Routes } from "react-router-dom";
 import Cart from "./routes/Cart";
