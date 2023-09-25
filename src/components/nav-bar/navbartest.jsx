@@ -1,15 +1,19 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
+import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import List from '@mui/material/List';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
+import ListItemText from '@mui/material/ListItemText';
 import { NavLink } from 'react-router-dom';
 import CartWidget from "./CartWidget";
 import "./index.css"
@@ -20,47 +24,54 @@ const navItems = [
     { name: 'Electronics', route: '/category/electronics' },
     { name: 'Jewelry', route: '/category/jewelry' }
 ];
+const drawerWidth = 240;
+
+const AppBar = styled(MuiAppBar, {
+    shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+    transition: theme.transitions.create(['margin', 'width'], {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+    }),
+    ...(open && {
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: `${drawerWidth}px`,
+        transition: theme.transitions.create(['margin', 'width'], {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+    }),
+}));
+const DrawerHeader = styled('div')(({ theme }) => ({
+    display: 'flex',
+    alignItems: 'center',
+    padding: theme.spacing(0, 1),
+    ...theme.mixins.toolbar,
+    justifyContent: 'flex-end',
+}));
 function DrawerAppBar() {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
-    const handleDrawerToggle = () => {
-        setMobileOpen((prevState) => !prevState);
+    const theme = useTheme();
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
     };
 
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
-        <Divider />
-        <List>
-            {navItems.map((item) => (
-                <ListItem key={item.name} disablePadding>
-                    <ListItemButton sx={{ textAlign: 'center' }}>
-                        <NavLink to={item.route}>
-                            <Button
-                                size="medium"
-                                style={{
-                                    color: "#000000",
-                                    marginRight: 50,
-                                    backgroundColor: "white",
-                                    fontWeight: 600,
-                                }}
-                            >
-                                {item.name}
-                            </Button>
-                        </NavLink>
-                    </ListItemButton>
-                </ListItem>
-            ))}
-        </List>
-    </Box>
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
     return (
-        <Box sx={{ display: 'flex', marginTop: 10 }}>
+        <Box sx={{ display: 'flex', marginBottom: 20 }}>
             <CssBaseline />
-            <AppBar component="nav" style={{ backgroundColor: '#172738' }}>
+            <AppBar position="fixed" open={open} style={{ backgroundColor: '#172738' }}>
                 <Toolbar>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
+                        onClick={handleDrawerOpen}
                         edge="start"
-                        onClick={handleDrawerToggle}
-                        sx={{ mr: 2, display: { sm: 'none' } }}
+                        sx={{ mr: 2, ...(open && { display: 'none' }) }}
                     >
                         <MenuIcon />
                     </IconButton>
@@ -72,30 +83,44 @@ function DrawerAppBar() {
                             alt=""
                         />
                     </NavLink>
-                    <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
-                        {navItems.map((item) => (
-                            <NavLink key={item.name} to={item.route}>
-                                <Button
-                                    size="medium"
-                                    style={{
-                                        color: "white",
-                                        marginRight: 50,
-                                        backgroundColor: "#172738",
-                                        fontWeight: 600,
-                                        fontSize: 15,
-                                        padding: 20
-                                    }}
-                                >
-                                    {item.name}
-                                </Button>
-                            </NavLink>
-                        ))}
-                    </Box>
                     <CartWidget />
                 </Toolbar>
             </AppBar>
+            <Drawer
+                sx={{
+                    width: drawerWidth,
+                    flexShrink: 0,
+                    '& .MuiDrawer-paper': {
+                        width: drawerWidth,
+                        boxSizing: 'border-box',
+                    },
+                }}
+                style={{ backgroundColor: '#172738' }}
+                variant="persistent"
+                anchor="left"
+                open={open}
+            >
+                <DrawerHeader>
+                    <IconButton onClick={handleDrawerClose}>
+                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                    </IconButton>
+                </DrawerHeader>
+                <Divider />
+                <List>
+                    {navItems.map((item) => (
+                        <ListItem key={item.name} disablePadding>
+                            <ListItemButton style={{ backgroundColor: '#172738' }}>
+                                <NavLink to={item.route}>
+                                    <ListItemText primary={item.name} style={{ backgroundColor: '#172738', color: 'white' }} />
+                                </NavLink>
+                            </ListItemButton>
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
         </Box>
     );
 }
 
 export default DrawerAppBar;
+
