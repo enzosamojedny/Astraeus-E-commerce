@@ -8,3 +8,4 @@ Incluí varias librerias:
 - ErrorBoundary, lo cual permite que no se rompa el componente si falta alguna información sobre el item.
 - Axios, lo cual simplifica las llamadas a la database
 - Material UI, es muy útil para ahorrar tiempo en responsiveness/css, y además sus componentes son estéticamente apropiados.
+  -SweetAlert2, lo cual em permitio usar un modal en el componente checkout para mostrar el numero de orden y los productos comprados.
