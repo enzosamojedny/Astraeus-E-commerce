@@ -6,6 +6,7 @@ import { Button, Typography } from '@mui/material';
 import { collection, addDoc } from 'firebase/firestore';
 import { db } from '../../firebase/client';
 import SpanningTable from './Table';
+import Swal from 'sweetalert2'
 
 function Checkout() {
   const [savedItems, setSavedItems] = useState([]);
@@ -34,6 +35,7 @@ function Checkout() {
   useEffect(() => {
     setSavedItems(JSON.parse(localStorage.getItem('cart')));
   }, [])
+  console.log(savedItems)
   const handleChange = (event) => {
     const { id, value } = event.target;
     setOrderData({ ...orderData, [id]: value });
@@ -43,11 +45,20 @@ function Checkout() {
     try {
       const orderWithItems = { ...orderData, savedItems };
       const docRef = await addDoc(collection(db, "orders"), orderWithItems);
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Your order was successful!',
+        html: `Order number: <b>${docRef.id}</b><br>Products bought: ${titles}`,
+        showConfirmButton: true,
+        timer: 30000
+      });
       console.log("Document written with ID: ", docRef.id);
     } catch (element) {
       console.error("Error adding document: ", element);
     }
   }
+
   return (
     <div className='div-container'>
       <SpanningTable />
