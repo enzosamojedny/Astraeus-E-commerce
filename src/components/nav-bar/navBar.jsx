@@ -62,7 +62,7 @@ function DrawerAppBar() {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box sx={{ display: 'flex', marginBottom: 10 }}>
             <CssBaseline />
             <AppBar position="fixed" open={open} style={{ backgroundColor: '#172738' }}>
                 <Toolbar>
