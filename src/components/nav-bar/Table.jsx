@@ -8,7 +8,6 @@ import Paper from '@mui/material/Paper';
 import './Checkout.css';
 import { useState, useEffect } from 'react';
 
-
 function ccyFormat(num) {
     return `${num.toFixed(2)}`;
 }

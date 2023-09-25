@@ -10,10 +10,11 @@ import SpanningTable from './Table';
 function Checkout() {
   const [orderData, setOrderData] = useState({
     email: '',
+    repeatedEmail: '',
     fullName: '',
     address: '',
     country: '',
-    creditCardNumber: ''
+    phone: ''
   });
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -31,7 +32,6 @@ function Checkout() {
   }
 
   return (
-
     <div className='div-container'>
       <SpanningTable />
       <Box
@@ -52,6 +52,14 @@ function Checkout() {
           variant='standard'
           className='form'
           value={orderData.email}
+          onChange={handleChange}
+        />
+        <TextField
+          id='repeatedEmail'
+          label='Repeat email address'
+          variant='standard'
+          className='form'
+          value={orderData.repeatedEmail}
           onChange={handleChange}
         />
         <TextField
@@ -79,11 +87,11 @@ function Checkout() {
           onChange={handleChange}
         />
         <TextField
-          id='creditCardNumber'
-          label='Credit Card Number'
+          id='phone'
+          label='Phone number'
           variant='standard'
           className='form'
-          value={orderData.creditCardNumber}
+          value={orderData.phone}
           onChange={handleChange}
         />
         <Button
