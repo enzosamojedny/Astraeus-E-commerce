@@ -19,7 +19,6 @@ export default function SpanningTable() {
     let counts = [];
     let images = [];
     let totals = [];
-    // let savedItems = JSON.parse(localStorage.getItem('cart'))
     savedItems.forEach(item => {
         ids.push(item.id);
         titles.push(item.title);

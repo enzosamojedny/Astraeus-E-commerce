@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Checkout.css';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -8,6 +8,7 @@ import { db } from '../../firebase/client';
 import SpanningTable from './Table';
 
 function Checkout() {
+  const [savedItems, setSavedItems] = useState([]);
   const [orderData, setOrderData] = useState({
     email: '',
     repeatedEmail: '',
@@ -16,21 +17,37 @@ function Checkout() {
     country: '',
     phone: ''
   });
+  let ids = [];
+  let titles = [];
+  let prices = [];
+  let counts = [];
+  let images = [];
+  let totals = [];
+  savedItems.forEach(item => {
+    ids.push(item.id);
+    titles.push(item.title);
+    prices.push(item.price);
+    counts.push(item.count);
+    images.push(item.image);
+    totals.push(item.total);
+  });
+  useEffect(() => {
+    setSavedItems(JSON.parse(localStorage.getItem('cart')));
+  }, [])
   const handleChange = (event) => {
     const { id, value } = event.target;
     setOrderData({ ...orderData, [id]: value });
   };
-
   const addOrder = async (element) => {
     element.preventDefault();
     try {
-      const docRef = await addDoc(collection(db, "orders"), orderData);
+      const orderWithItems = { ...orderData, savedItems };
+      const docRef = await addDoc(collection(db, "orders"), orderWithItems);
       console.log("Document written with ID: ", docRef.id);
     } catch (element) {
       console.error("Error adding document: ", element);
     }
   }
-
   return (
     <div className='div-container'>
       <SpanningTable />
@@ -95,6 +112,7 @@ function Checkout() {
           onChange={handleChange}
         />
         <Button
+          type='button'
           variant='outlined'
           size='small'
           style={{
@@ -108,9 +126,8 @@ function Checkout() {
           BUY NOW
         </Button>
       </Box>
-
     </div>
   );
-}
+};
 
 export default Checkout;
