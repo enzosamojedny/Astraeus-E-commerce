@@ -9,4 +9,3 @@ Incluí varias librerias:
 - Axios, lo cual simplifica las llamadas a la database
 - Material UI, es muy útil para ahorrar tiempo en responsiveness/css, y además sus componentes son estéticamente apropiados.
   -SweetAlert2, lo cual me posibilita hacer un modal completamente responsive, coun un timeOut determinado solo usado en el componente checkout para mostrar el orderID de firebase.
-  > > > > > > > 01e9598b3f2419225ec26ec9f5da662a18a4736d
