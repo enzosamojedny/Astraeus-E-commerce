@@ -8,7 +8,7 @@
     align-items: center;
     gap: 12px;
     justify-content: space-between;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
     transition: transform 0.3s;
     text-align: center;
     margin-bottom: 20px;
@@ -21,7 +21,8 @@
 .product-container{
     display: flex;
     flex-wrap: wrap;
-    background-color: #f0f0f0;
+    background-color: #ffffff;
     height: max-content;
     justify-content: center;
+    margin-top: 100px;
 }

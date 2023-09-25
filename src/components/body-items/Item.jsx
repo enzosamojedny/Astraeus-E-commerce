@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./ProductItem.css";
 import ResponsiveDialog from "./extras/Popup";
-import { Typography, Box, Button } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import SimpleBackDrop from "./extras/SimpleBackdrop";
 
 function Item({ products }) {

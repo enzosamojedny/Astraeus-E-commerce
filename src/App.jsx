@@ -7,8 +7,7 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase/client";
 import CategoryItems from "./components/nav-bar/CategoryItems";
 import Checkout from "./components/nav-bar/Checkout";
-import DrawerAppBar from "./components/nav-bar/navbartest";
-
+import DrawerAppBar from "./components/nav-bar/navBar";
 export const DataContext = createContext();
 
 function App() {

@@ -16,7 +16,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { NavLink } from 'react-router-dom';
 import CartWidget from "./CartWidget";
-import "./index.css"
+
 
 const navItems = [
     { name: 'Men clothes', route: '/category/mens%20clothing' },
@@ -62,7 +62,7 @@ function DrawerAppBar() {
     };
 
     return (
-        <Box sx={{ display: 'flex', marginBottom: 20 }}>
+        <Box sx={{ display: 'flex' }}>
             <CssBaseline />
             <AppBar position="fixed" open={open} style={{ backgroundColor: '#172738' }}>
                 <Toolbar>
